@@ -9,7 +9,7 @@ Note:
 public class Solution {
 	public void moveZeros(int[] nums) {
 		/*
-		solution version one:
+		// Solution version one:
 		// Use an arraylist to store all non-zero elements
 		ArrayList<Integer> arrlst = new ArrayList<Integer>();
 		for (int i = 0; i < nums.length; i++) {
@@ -24,7 +24,9 @@ public class Solution {
 		}
 		*/
 		
-		// Use an integer to keep track of the index of the element to swap with a non-zero element
+		/*
+		// Solution version two:
+		// Use an integer to keep track of the index of the element to rewrite with a non-zero element
 		int index = 0;
 		for (int i = 0; i < nums.length; i++) {
 			if (nums[i] != 0) {
@@ -37,5 +39,22 @@ public class Solution {
 		for (int j = index; j < nums.length; j++) {
 			nums[j] = 0;
 		}
+		*/
+		
+		// Solution version three:
+		// Optimize the number of operations from the version two when given an array like this:
+		// nums = [0, 1, 0, 0, 0, 0, 0], we can manage to control the number of operations is equal 
+		// to the number non-zero elements, whereas we have the operations rewrite the elements followed
+		// by non-zero elements with 0s for the solution version two. Solution version three is a one-step
+		// swap version while the second version splits swap into two steps
+		for (int lastNonZeroFoundAt = 0, cur = 0; cur < nums.length; cur++) {
+			if (nums[cur] != 0) {
+				int temp = nums[lastNonZeroFoundAt];
+				nums[lastNonZeroFoundAt] = nums[cur];
+				nums[cur] = temp;
+				lastNonZeroFoundAt++;
+			}
+		}
+		
 	}
 }
