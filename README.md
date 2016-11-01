@@ -1,2 +1,2 @@
 # CodingPractice
-Coding questions covering topics from data structure and algorithms
+Coding questions covering topics from data structures and algorithms
