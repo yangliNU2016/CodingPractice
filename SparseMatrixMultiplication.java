@@ -24,12 +24,17 @@ public class Solution {
 		int[][] ret = new int[A.length][B[0].length];
 		for (int i = 0; i < ret.length; i++) {
 			for (int j = 0; j < ret[i].length; j++) {
-				ret[i][j] = rowByCol(A, B, i, j);
+				for(int k = 0; k < A[i].length; k++) {
+					if(A[i][k] != 0 && B[k][j] != 0)
+						ret[i][j] += A[i][k] * B[k][j];
+				}	
+//				ret[i][j] = rowByCol(A, B, i, j);
 			}
 		}
 		return ret;
 	}
 	
+	/*
 	public int rowByCol(int[][] A, int[][] B, int rowIndex, int colIndex) {
 		int ret = 0;
 		for(int k = 0; k < A[rowIndex].length; k++) {
@@ -38,4 +43,5 @@ public class Solution {
 		}
 		return ret;
 	}
+	*/
 }
