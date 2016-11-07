@@ -33,7 +33,8 @@ public class Solution {
 	public int rowByCol(int[][] A, int[][] B, int rowIndex, int colIndex) {
 		int ret = 0;
 		for(int k = 0; k < A[rowIndex].length; k++) {
-			ret += A[rowIndex][k] * B[k][colIndex]; 
+			if (A[rowIndex][k] != 0 && B[k][colIndex] != 0)
+				ret += A[rowIndex][k] * B[k][colIndex]; 
 		}
 		return ret;
 	}
