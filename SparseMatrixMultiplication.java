@@ -23,11 +23,13 @@ public class Solution {
 	    if(A == null || B == null) return null;
 		int[][] ret = new int[A.length][B[0].length];
 		for (int i = 0; i < ret.length; i++) {
-			for (int j = 0; j < ret[i].length; j++) {
-				for(int k = 0; k < A[i].length; k++) {
-					if(A[i][k] != 0 && B[k][j] != 0)
-						ret[i][j] += A[i][k] * B[k][j];
-				}	
+			for(int k = 0; k < A[i].length; k++) {
+				if(A[i][k] != 0){
+					for (int j = 0; j < ret[i].length; j++) {	
+						if(B[k][j] != 0)
+							ret[i][j] += A[i][k] * B[k][j];
+					}
+				}
 //				ret[i][j] = rowByCol(A, B, i, j);
 			}
 		}
