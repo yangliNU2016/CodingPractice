@@ -11,6 +11,7 @@ Output: "bb"
 */
 public class Solution {
     public String longestPalindrome(String s) {
+        /*
         if(s == null) return s;
         if(s.length() == 0 || s.length() == 1) return s;
         // Use two arraylists two track the indices of two types of palindromic pattern "..yxxy.." or "..zyxyz.."
@@ -62,5 +63,22 @@ public class Solution {
             count++;
         }    
         return palindrome;
+        */
+        
+        int maxPld = 0, index = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int len1 = lenPld(s, i , i), len2 = lenPld(s, i, i + 1);
+            if (maxPld < Math.max(len1, len2)) {
+                index = (len1 > len2) ? (i - len1 / 2) : (i - len2 / 2 + 1);
+                maxPld = Math.max(len1, len2);
+            }
+        }
+        return s.substring(index, index + maxPld);
+    }
+    
+    private int lenPld(String s, int i, int j) {
+        for (; i >= 0 && j < s.length(); i--, j++) 
+            if(s.charAt(i) != s.charAt(j)) break;
+        return j - i - 2 + 1; // 2 means current two unmatched char
     }
 }
