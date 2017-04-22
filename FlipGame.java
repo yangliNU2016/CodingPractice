@@ -16,12 +16,12 @@ public class Solution {
     public List<String> generatePossibleNextMoves(String s) {
         List<String> ret = new ArrayList<String>(); 
         for (int i = 0; i < s.length(); i++) {
-            # Find the first character that equals to "+"
+            // Find the first character that equals to "+"
             if (s.charAt(i) == '+') {
-                # Check if the following character is valid and also equals to "+" 
+                // Check if the following character is valid and also equals to "+" 
                 if (i + 1 < s.length() && s.charAt(i + 1) == '+') {
                     String ad = s.substring(0, i) + "--";
-                    # Check if the pattern is the end of the String
+                    // Check if the pattern is the end of the String
                     if (i + 2 < s.length()) {
                         ad += s.substring(i + 2);
                     }
